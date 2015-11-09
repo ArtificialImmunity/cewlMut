@@ -8,5 +8,6 @@ Usage: cewlMut [OPTION] ... URL
 	-o: specify the name of the output directory, default CeWLMutOutput
 
 Example:
+
 <code>./cewlMut.sh -o mywebsite <URL></code>
 	
