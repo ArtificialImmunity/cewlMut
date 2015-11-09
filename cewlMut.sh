@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#This script uses CeWL, John, and RSMangler to generate an extensive wordlist and can be used to test the password strength of your websites passwords i.e. if it appears in this list, it would be worth changing it.
+# This script uses CeWL, John, and RSMangler to generate an extensive wordlist
+# and can be used to test the password strength of your websites passwords 
+# i.e. if it appears in this list, it would be worth changing it.
 
 #			Copyright (C) 2015  Jordan Bruce
 
