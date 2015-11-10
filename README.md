@@ -12,5 +12,5 @@ Usage:
 
 Example:
 
-<code>./cewlMut.sh -o mywebsite <URL></code>
+<code>./cewlMut.sh -o mywebsite \<URL\></code>
 	
