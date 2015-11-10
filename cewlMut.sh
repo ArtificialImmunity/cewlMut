@@ -24,6 +24,7 @@ DEPTH=2
 MINLEN=6
 MAXLEN=12
 OUTPUT=CeWLMutOutput
+CLEANUP=0
 
 print_usage() {
 	echo ""
@@ -33,17 +34,19 @@ print_usage() {
 	-d: depth of CeWL spider, default $DEPTH
 	-m: minimum word length, default $MINLEN
 	-x: maximum word length, default $MAXLEN
-	-o: specify the name of the output directory, default $OUTPUT"
+	-o: specify the name of the output directory, default $OUTPUT
+	-c: cleans up files and leaves only the final wordlist, default $CLEANUP (0:off/1:on)"
 	exit
 }
 
 #Parse the options
-while getopts 'd:m:x:o:' opt ; do
+while getopts 'd:m:x:o:c:' opt ; do
 	case $opt in
 		d) DEPTH=$OPTARG ;;
 		m) MINLEN=$OPTARG ;;
 		x) MAXLEN=$OPTARG ;;
 		o) OUTPUT=$OPTARG ;;
+		c) CLEANUP=$OPTARG ;;
 	esac
 done
 #skip over the processed options
@@ -127,7 +130,11 @@ echo "[+] Using RSMangler to mutate base words with caps and leet speak"
 rsmangler -f $CEWLMUTBASEFILE -ptTculseia --punctuation --pna --pnb --na --nb --force >> $CEWLMUTFILE
 
 #Delete unwanted files and only leave the final wordlist
-#echo "[+] Cleaning up"
-#rm $CEWLRAWFILE $CEWLBASEFILE $CEWLORDEREDBASE $CEWLMUTBASEFILE 
+#as specified by the -c flag
+if [ $CLEANUP -eq 1 ]
+then
+	echo "[+] Cleaning up"
+	rm $CEWLRAWFILE $CEWLBASEFILE $CEWLORDEREDBASE $CEWLMUTBASEFILE 
+fi
 
 echo "[+] Done"
