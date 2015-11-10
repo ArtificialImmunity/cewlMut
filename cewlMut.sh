@@ -110,7 +110,7 @@ cewl -d $DEPTH -m $MINLEN -w $CEWLRAWFILE $URL > /dev/null
 echo "[+] CeWL finished"
 
 #Use awk to delete and words over max limit
-echo "[+] Triming max lenght words"
+echo "[+] Triming max length words"
 awk "length <= $MAXLEN" $CEWLRAWFILE > $CEWLBASEFILE
 
 #Make sure the list is unique, then sort
@@ -126,7 +126,7 @@ echo "[+] Using John to mutate modified base words"
 john --wordlist=$CEWLMUTBASEFILE --rules --stdout > $CEWLMUTFILE
 
 #Use rsmangler rules to mutate the base word list from CeWL
-echo "[+] Using RSMangler to mutate base words with caps and leet speak"
+echo "[+] Using RSMangler to mutate modified base words"
 rsmangler -f $CEWLMUTBASEFILE -ptTculseia --punctuation --pna --pnb --na --nb --force >> $CEWLMUTFILE
 
 #Delete unwanted files and only leave the final wordlist
